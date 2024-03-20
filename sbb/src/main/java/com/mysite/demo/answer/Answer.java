@@ -1,8 +1,10 @@
-package com.mysite.demo;
+package com.mysite.demo.answer;
 
 import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.CreatedDate;
+
+import com.mysite.demo.question.Question;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

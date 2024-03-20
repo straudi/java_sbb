@@ -1,4 +1,4 @@
-package com.mysite.demo;
+package com.mysite.demo.question;
 
 import java.util.List;
 
