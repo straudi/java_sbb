@@ -1,12 +1,14 @@
 package com.mysite.demo.question;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -38,9 +40,7 @@ public class QuestionService {
 			q.setSubject(subject);
 			q.setContent(content);
 			q.setCreateDate(LocalDateTime.now());
-			Question savedEntity = this.questionRepository.save(q);
-			System.out.println("========ID========="+savedEntity.getId());
-			System.out.println("========ID========="+savedEntity.getSubject());
+			this.questionRepository.save(q);
 		} catch (Exception e) {
 		    // 실패했을 때의 로직
 		    e.printStackTrace();
@@ -48,7 +48,9 @@ public class QuestionService {
 	}
 	
 	public Page<Question> getList(int page){
-		Pageable pageable = PageRequest.of(page, 10);
+		List<Sort.Order> sorts = new ArrayList<>();
+		sorts.add(Sort.Order.desc("createDate"));
+		Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts));
 		return this.questionRepository.findAll(pageable);
 	}
 	
