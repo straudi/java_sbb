@@ -39,11 +39,11 @@ class SbbApplicationTests {
 	@Test
 	void testJpa() {
 		// 질문 생성
-		Question q1 = new Question();
-		q1.setSubject("선재가 무엇인가요?");
-		q1.setContent("sbb에 대해서 알고 싶습니다.");
-		q1.setCreateDate(LocalDateTime.now());
-		this.questionRepository.save(q1); // 첫 번 째 질 문 저 장
+//		Question q1 = new Question();
+//		q1.setSubject("선재가 무엇인가요?");
+//		q1.setContent("sbb에 대해서 알고 싶습니다.");
+//		q1.setCreateDate(LocalDateTime.now());
+//		this.questionRepository.save(q1); // 첫 번 째 질 문 저 장
 //		
 //		Question q2 = new Question();
 //		q2.setSubject("스 프 링 부 트 모 델 질 문 입 니 다.");
@@ -123,7 +123,7 @@ class SbbApplicationTests {
 		for (int i = 1; i <= 300; i++) {
 			 String subject = String.format("테스트 데이터입니다:[%03d]", i);
 			 String content = "내용무";
-			 this.questionService.create(subject, content);
+			 this.questionService.create(subject, content, null);
 		}
 	}
 

@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mysite.demo.DataNotFoundException;
+import com.mysite.demo.user.SiteUser;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,12 +35,13 @@ public class QuestionService {
 		}
 	}
 
-	public void create(String subject, String content) {
+	public void create(String subject, String content, SiteUser user) {
 		try {
 			Question q = new Question();
 			q.setSubject(subject);
 			q.setContent(content);
 			q.setCreateDate(LocalDateTime.now());
+			q.setAuthor(user);
 			this.questionRepository.save(q);
 		} catch (Exception e) {
 		    // 실패했을 때의 로직
