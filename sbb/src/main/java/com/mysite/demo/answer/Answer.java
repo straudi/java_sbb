@@ -30,6 +30,8 @@ public class Answer {
 	@CreatedDate
 	private LocalDateTime createDate;
 	
+	private LocalDateTime modifyDate;
+	
 	// N:1 관계
 	@ManyToOne 
 	private Question question;
